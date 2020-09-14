@@ -16,7 +16,7 @@ public class Bonus4A extends HttpServlet {
         res.setContentType("text/html");
         PrintWriter out = res.getWriter();
 
-        out.println("<h2><a href=\"localhost:8080/pong\">PONG</a></h2>");
+        out.println("<h2><a href=\"/pong\">PONG</a></h2>");
     }
 }
 
