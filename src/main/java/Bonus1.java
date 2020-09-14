@@ -12,8 +12,15 @@ public class Bonus1 extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
         res.setContentType("text/html");
         PrintWriter out = res.getWriter();
+        String firstName = req.getParameter("first");
+        String lastName = req.getParameter("last");
 
-        out.println("<h1>Jonathan Phillips</h1>");
+        if (firstName == null && lastName == null) {
+            firstName = "John";
+            lastName = "Doe";
+        }
+
+        out.println("<h1>" + firstName + " " + lastName + "</h1>");
 
     }
 }
