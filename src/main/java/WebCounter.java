@@ -13,9 +13,11 @@ public class WebCounter extends HttpServlet {
         PrintWriter out = res.getWriter();
         String reset = req.getParameter("reset");
 
-        count++;
-
-
+        if (reset == null) {
+            count++;
+        } else {
+            count = 1;
+        }
         out.println("<h1> Page views: " + count + ".</h1>");
 
     }
