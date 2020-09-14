@@ -10,12 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name="Bonus4", urlPatterns = "/order-summary")
-public class Bonus4 extends HttpServlet {
-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
+@WebServlet(name="Bonus4A", urlPatterns = "/ping")
+public class Bonus4A extends HttpServlet {
+    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
         res.setContentType("text/html");
         PrintWriter out = res.getWriter();
-        System.out.println(req.getParameter("name"));
-        System.out.println(req.getParameter("quantity"));
+
+        out.println("<h2><a href=\"localhost:8080/pong\">PONG</a></h2>");
     }
 }
+
