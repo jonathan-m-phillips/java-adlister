@@ -19,7 +19,5 @@ public class HelloWorldServlet extends HttpServlet {
 
         out.println("<h1> Hello, " + name + ".</h1>");
 
-        int count = 0;
-
     }
 }
