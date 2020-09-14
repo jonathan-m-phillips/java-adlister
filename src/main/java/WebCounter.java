@@ -11,9 +11,10 @@ public class WebCounter extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
         res.setContentType("text/html");
         PrintWriter out = res.getWriter();
-
+        String reset = req.getParameter("reset");
 
         count++;
+
 
         out.println("<h1> Page views: " + count + ".</h1>");
 

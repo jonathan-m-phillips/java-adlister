@@ -16,11 +16,11 @@ public class Bonus2 extends HttpServlet {
         res.setHeader("content-type","text/html");
         PrintWriter out = res.getWriter();
 
-        out.println("<form>\n" +
-                "  <label for=\"fname\">name of product:</label><br>\n" +
-                "  <input type=\"text\" id=\"fname\" name=\"fname\"><br>\n" +
-                "  <label for=\"lname\">amount:</label><br>\n" +
-                "  <input type=\"text\" id=\"lname\" name=\"lname\">\n" +
+        out.println("<form method=\"POST\" action=\"/order-summary\">\n" +
+                "  <label for=\"name\">name of product:</label><br>\n" +
+                "  <input type=\"text\" id=\"name\" name=\"name\"><br>\n" +
+                "  <label for=\"quantity\">amount:</label><br>\n" +
+                "  <input type=\"text\" id=\"quantity\" name=\"quantity\">\n" +
                 "  <br><input type=\"submit\" value=\"Submit\">" +
                 "</form>");
     }
