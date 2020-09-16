@@ -3,9 +3,12 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <jsp:include page="partials/head.jsp">
+        <jsp:param name="title" value="Your profile"/>
+    </jsp:include>
 </head>
 <body>
+<jsp:include page="partials/navbar.jsp" />
 <p>hey</p>
 </body>
 </html>
