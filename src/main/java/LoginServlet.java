@@ -8,7 +8,8 @@ import java.io.IOException;
 @WebServlet(name = "ViewProfileServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/login.jsp").forward(request, response);
 
         if(request.getMethod().equalsIgnoreCase("post")) {
             String username = request.getParameter("username");
