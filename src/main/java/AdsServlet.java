@@ -16,7 +16,7 @@ public class AdsServlet extends HttpServlet {
         allAds = DaoFactory.getAdsDao().all();
 
         request.setAttribute("allAds", allAds);
-        request.getRequestDispatcher("ads/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
 
     }
 }
