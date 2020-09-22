@@ -1,28 +1,28 @@
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import com.mysql.cj.jdbc.Driver;
 
 public class MySQLAdsDao implements Ads{
 
     private Connection connection;
 
-    public MySQLAdsDao(Connection connection, Config config) {
+    public MySQLAdsDao() {
         try {
-            config = new Config();
+            DriverManager.registerDriver(new Driver());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            Config config = new Config();
             connection = DriverManager.getConnection(
                     config.getUrl(),
                     config.getUser(),
                     config.getPassword()
             );
-            this.connection = connection;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    public MySQLAdsDao() {
-
     }
 
     @Override
@@ -32,7 +32,7 @@ public class MySQLAdsDao implements Ads{
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM ads");
             while (rs.next()) {
-                Ad ad = new Ad(rs.getLong("id"), rs.getLong("userId"), rs.getString("title"), rs.getString("description"));
+                Ad ad = new Ad(rs.getLong("id"), rs.getLong("user_id"), rs.getString("title"), rs.getString("description"));
                 ads.add(ad);
             }
             return ads;
