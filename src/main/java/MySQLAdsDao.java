@@ -1,9 +1,10 @@
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
 import com.mysql.cj.jdbc.Driver;
 
-public class MySQLAdsDao implements Ads{
+public class MySQLAdsDao implements Ads {
 
     private Connection connection;
 
@@ -43,7 +44,17 @@ public class MySQLAdsDao implements Ads{
     }
 
     @Override
-    public Long insert(Ad ad) {
+    public Long insert(Ad ad) throws SQLException {
+        String query = String.format("INSERT INTO ads(user_id, title, description) VALUES(%d, '%s', '%s')",
+                ad.getUserId(), ad.getTitle(), ad.getDescription());
+//        creating and executing
+        Statement stmt = connection.createStatement();
+        stmt.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
+        ResultSet rs = stmt.getGeneratedKeys();
+        // System.out.println(rs);
+        if (rs.next()) {
+            System.out.println("Inserted a new Ads! New id: " + rs.getLong(1));
+        }
         return ad.getId();
     }
 }
